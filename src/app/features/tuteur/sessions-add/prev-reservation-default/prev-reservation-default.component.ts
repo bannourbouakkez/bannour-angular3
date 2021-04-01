@@ -1,9 +1,8 @@
 import { Component, OnInit , Output, Input , EventEmitter} from '@angular/core';
-import { MatDialogConfig, MatDialog, MatDialogRef } from '@angular/material';
 import { PrevReservationComponent } from '../prev-reservation/prev-reservation.component';
 import { PrevResIntService } from '../prev-res-int.service';
-//import { isMoment } from 'moment';
 import moment, { isMoment } from 'moment';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 
 //import { PrevResIntService } from '../prev-res-int.service';
 
@@ -33,6 +32,7 @@ export class PrevReservationDefaultComponent implements OnInit {
   OtpID:number=0;
   DateTimeOTp:string;
   DontSend:boolean=true;
+  
   //@Output() action: EventEmitter<any> = new EventEmitter<any>();
   
   constructor(private dialog: MatDialog
