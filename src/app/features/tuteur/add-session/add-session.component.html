@@ -1,0 +1,25 @@
+
+<form [formGroup]="form"  autocomplete="off">
+
+          <label>Choisissez la période</label>
+          <select formControlName="PeriodeID" (change)="selectPeriode($any($event))" >
+            <option *ngFor="let periode of periodes" [value]="periode.PeriodeID">[ {{periode.start}} -> {{periode.end}} ]</option>
+          </select>
+          <label>Choisissez la date</label>
+          <select formControlName="DateID" (change)="selectDate($any($event))">
+            <option *ngFor="let date of dates" [value]="date.DateID">{{date.date}}</option>
+          </select>
+        
+          
+          <app-sessions [DateID]="form.get('DateID').value"></app-sessions>
+          
+</form>
+
+<button (click)="submit()"></button>
+
+
+
+
+
+
+
