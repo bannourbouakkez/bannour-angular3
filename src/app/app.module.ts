@@ -10,6 +10,11 @@ import { TokenInterceptorService } from './shared/services/token-interceptor-ser
 import { HomeComponent } from './shared/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
+/*
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+*/
+
 
 @NgModule({
   declarations: [
@@ -21,14 +26,24 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    //MatDatepickerModule, MatMomentDateModule,
+
+
+
   ],
-  providers: [
+  providers: [ 
     {
-      provide: HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS, 
       useClass: TokenInterceptorService,
       multi: true
-    }],
+    },
+  
+   // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+
+ 
+  ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 

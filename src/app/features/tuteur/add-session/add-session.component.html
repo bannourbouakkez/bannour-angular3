@@ -11,11 +11,11 @@
           </select>
         
           
-          <app-sessions [DateID]="form.get('DateID').value"></app-sessions>
+          <!--<app-sessions [DateID]="form.get('DateID').value"></app-sessions>-->
+          <app-dialog-session [DateID]="form.get('DateID').value" ></app-dialog-session>
           
 </form>
 
-<button (click)="submit()"></button>
 
 
 

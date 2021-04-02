@@ -27,5 +27,14 @@ export class TuteurService {
   getSessionsByDateID(DateID:number){
     return this._http.get<any>(environment.apiUrl+'/tuteur/getSessionsByDateID/'+DateID).toPromise();
   }
+
+  getDateByID(DateID:number):any {
+    return this._http.get<any>(environment.apiUrl + '/tuteur/getDateByID/'+DateID).toPromise();
+  }
+
+  deleteSession(SessionID:number):any {
+    return this._http.get<any>(environment.apiUrl + '/tuteur/deleteSession/'+SessionID).toPromise();
+  }
+  
   
 }

@@ -30,9 +30,11 @@ export class AddSessionComponent implements OnInit {
     //this.detectFormChanges();
   }
 
+  /*
   submit(){
 
   }
+  */
   
   getPeriodes(){
     this._tuteurService.getPeriodes().then(
@@ -46,6 +48,7 @@ export class AddSessionComponent implements OnInit {
   
 
   selectPeriode(e:any){
+    this.form.patchValue({DateID:null});
     let PeriodeID=e.target.value;
     this.dates=[];
     if(PeriodeID>0){
