@@ -23,8 +23,8 @@ export class AddPeriodeComponent implements OnInit {
   date = null;
   datesToDelete: number[] = [];
   range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
+    start: new FormControl('',Validators.required),
+    end: new FormControl('',Validators.required)
   });
 
   formDate: FormGroup;
@@ -66,6 +66,8 @@ export class AddPeriodeComponent implements OnInit {
   }
 
   addPeriode() {
+    console.log(this.range.value);
+    if(this.range.valid){
     this._tuteurService.addDisponibilite(this.range.value, this.dates).then(
       res => {
         if (res.success) {
@@ -74,6 +76,9 @@ export class AddPeriodeComponent implements OnInit {
           this.dialogRef.close();
         }
       });
+    }else{
+      console.log('invalid form');
+    }
   }
 
   editPeriode(PeriodeID: number) {

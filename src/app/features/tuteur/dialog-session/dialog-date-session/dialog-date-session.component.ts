@@ -11,10 +11,10 @@ import { isMoment } from 'moment';
   templateUrl: './dialog-date-session.component.html',
   styleUrls: ['./dialog-date-session.component.scss']
 })
-export class DialogDateSessionComponent  implements OnInit {
+export class DialogDateSessionComponent implements OnInit {
 
   formData;
-  itemList=<any>[];
+  itemList = <any>[];
   isValid: boolean = true;
 
   constructor(
@@ -29,66 +29,76 @@ export class DialogDateSessionComponent  implements OnInit {
       this.formData = {
         SessionID: 0,
         date_id: this.data.DateID,
-        timeStart:null,
-        timeEnd:null
+        timeStart: null,
+        timeEnd: null
       }
     else
       this.formData = Object.assign({}, this._dateService.datesessions[this.data.dateSessionIndex]);
+
+
   }
 
   onSubmit(form: NgForm) {
 
-    //console.log(this.validateForm(form.value));
-    
-    if (this.validateForm(form.value)) {
-      if (this.data.dateSessionIndex == null){
-        this._dateService.addSession(this.data.DateID,form.value).then(res => {
+
+    if (this.validateForm(this.formData)) {
+      if (this.data.dateSessionIndex == null) {
+        this._dateService.addSession(this.data.DateID, form.value).then(res => {
           console.log(res);
-          if(res.success){
-          this._dateService.datesessions.push(res.session);
-          }else{
+          if (res.success) {
+            this._dateService.datesessions.push(res.session);
+          } else {
             console.log('');
           }
-        }); 
+        });
       }
-      else{        
-        this._dateService.editSession(this.formData.SessionID,form.value).then(res => {
-          if(res.success){
-          this._dateService.datesessions[this.data.dateSessionIndex] = res.session;
-          console.log(res.msg);
-          }else{
+      else {
+        this._dateService.editSession(this.formData.SessionID, form.value).then(res => {
+          if (res.success) {
+            this._dateService.datesessions[this.data.dateSessionIndex] = res.session;
+            console.log(res.msg);
+          } else {
 
             console.log(res.msg);
           }
-        }); 
+        });
       }
 
       this.dialogRef.close();
+    } else {
+      console.log('invalide form');
     }
-    
+
+
+
   }
 
   validateForm(formData) {
-    /*
+    
     this.isValid = true;
-    console.log(formData);
-    if (formData.SessionID == 0)
+    if (formData.timeStart == null)
       this.isValid = false;
+    if (formData.timeEnd == null)
+      this.isValid = false;
+    
+      if(this.isValid){
+        var ts=new Date(this.formData.timeStart);
+        var te=new Date(this.formData.timeEnd);
+        this.isValid = ts.getTime() < te.getTime();
+      }
     return this.isValid;
-    */
-   return true;
   }
 
-  reglageTemps(datetime:any){
+  reglageTemps(datetime: any) {
     return datetime.getTime();
   }
 
-  setTimeStart($event){
+  setTimeStart($event) {
     //this.formData.timeStart=($event.value).format("YYYY-MM-DD hh:mm"); // DD/MM/YYYY hh:mm
-    this.formData.timeStart=($event.value).format("YYYY-MM-DD HH:MM"); // 
+    this.formData.timeStart = ($event.value).format("YYYY-MM-DD HH:mm"); // 
   }
-  setTimeEnd($event){
-    this.formData.timeEnd=($event.value).format("YYYY-MM-DD HH:MM");
+  setTimeEnd($event) {
+    this.formData.timeEnd = ($event.value).format("YYYY-MM-DD HH:mm");
   }
 
 
