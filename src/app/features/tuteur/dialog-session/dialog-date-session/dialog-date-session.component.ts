@@ -84,10 +84,11 @@ export class DialogDateSessionComponent  implements OnInit {
   }
 
   setTimeStart($event){
-    this.formData.timeStart=($event.value).format("YYYY-MM-DD hh:mm"); // DD/MM/YYYY
+    //this.formData.timeStart=($event.value).format("YYYY-MM-DD hh:mm"); // DD/MM/YYYY hh:mm
+    this.formData.timeStart=($event.value).format("YYYY-MM-DD HH:MM"); // 
   }
   setTimeEnd($event){
-    this.formData.timeEnd=($event.value).format("YYYY-MM-DD hh:mm");
+    this.formData.timeEnd=($event.value).format("YYYY-MM-DD HH:MM");
   }
 
 
