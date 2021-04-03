@@ -61,7 +61,9 @@ export class DialogSessionComponent  {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.data = { dateSessionIndex, DateID };
-    this.dialog.open(DialogDateSessionComponent, dialogConfig).afterClosed().subscribe(res => {});
+    this.dialog.open(DialogDateSessionComponent, dialogConfig).afterClosed().subscribe(res => {
+      
+    });
   }
 
 

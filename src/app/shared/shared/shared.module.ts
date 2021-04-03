@@ -19,9 +19,9 @@ import { MomentDateTimeAdapter , OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS } from 'ng
 
 export const MY_CUSTOM_FORMATS = {
   parseInput: 'DD/MM/YYYY',
-  fullPickerInput: 'DD/MM/YYYY hh:mm a',
+  fullPickerInput: 'DD/MM/YYYY hh:mm a', //
   datePickerInput: 'DD/MM/YYYY',
-  timePickerInput: 'hh:mm a',
+  timePickerInput: 'hh:mm a', //
   monthYearLabel: 'MMM-YYYY',
   dateA11yLabel: 'LL',
   monthYearA11yLabel: 'MMMM-YYYY'
@@ -53,7 +53,7 @@ export const MY_NATIVE_FORMATS = {
     
     
     { provide: DateTimeAdapter, useClass: MomentDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE] },
-    //{ provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS },
+    { provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS },
     
     //{ provide: OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     //{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
@@ -65,7 +65,7 @@ export const MY_NATIVE_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
     
     
-    ,{provide: OWL_DATE_TIME_LOCALE, useValue: 'in'}
+    //,{provide: OWL_DATE_TIME_LOCALE, useValue: 'in'}
     //,{provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS},
 
 

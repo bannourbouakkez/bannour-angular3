@@ -55,8 +55,10 @@ export class DialogDateSessionComponent  implements OnInit {
         this._dateService.editSession(this.formData.SessionID,form.value).then(res => {
           if(res.success){
           this._dateService.datesessions[this.data.dateSessionIndex] = res.session;
+          console.log(res.msg);
           }else{
-            console.log('');
+
+            console.log(res.msg);
           }
         }); 
       }
@@ -79,6 +81,13 @@ export class DialogDateSessionComponent  implements OnInit {
 
   reglageTemps(datetime:any){
     return datetime.getTime();
+  }
+
+  setTimeStart($event){
+    this.formData.timeStart=($event.value).format("YYYY-MM-DD hh:mm"); // DD/MM/YYYY
+  }
+  setTimeEnd($event){
+    this.formData.timeEnd=($event.value).format("YYYY-MM-DD hh:mm");
   }
 
 

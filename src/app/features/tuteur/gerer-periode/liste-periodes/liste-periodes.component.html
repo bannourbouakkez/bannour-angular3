@@ -1,0 +1,24 @@
+
+<ng-container *ngIf="!load">
+...
+</ng-container>
+
+<ng-container *ngIf="load">
+    <br>
+    <span (click)="addOrEditPeriode(0,0)">[+]</span>
+    <br><br><br>
+    +++++++++++++++++++++++++++++++++++
+    <br>
+    
+   <div *ngFor="let periode of periodes;let i=index;">
+       {{periode | json }}
+       <br>
+       <span (click)="deletePeriode(periode.PeriodeID,i)">[X]</span>
+       <span (click)="addOrEditPeriode(periode.PeriodeID,i)">[E]</span>
+       <br>
+       ___________________
+       <br>
+   </div>
+
+</ng-container>
+

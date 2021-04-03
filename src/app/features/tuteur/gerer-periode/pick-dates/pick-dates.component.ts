@@ -1,6 +1,7 @@
 
 import {ChangeDetectionStrategy, Component, ViewChild , OnInit , EventEmitter, Output, Input} from '@angular/core';
 import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
+import moment from 'moment';
 
 @Component({
   selector: 'app-pick-dates',
@@ -13,12 +14,22 @@ export class PickDatesComponent implements OnInit {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();
   @Input() minDate:Date;  
   @Input() maxDate:Date;  
+  @Input() ldates:any[];
 
   //minDate = null;//new Date(2021, 2, 15);
   //maxDate = null;//new Date(2021, 3, 15);
 
   ngOnInit(){
     this.model.splice(0, 1);
+    this.pushDates();
+  }
+
+  
+  pushDates(){
+    for(let i=0;i<this.ldates.length;i++){ 
+      let date = this.ldates[i].date;
+      this.model.push(date);
+    }
   }
 
   ngOnChanges() {
@@ -40,6 +51,7 @@ export class PickDatesComponent implements OnInit {
     new Date('6/17/1998')
   */
 
+    
   @ViewChild('picker', { static: true }) _picker: MatDatepicker<Date>;
 
   public dateClass = (date: Date) => {
@@ -87,6 +99,8 @@ export class PickDatesComponent implements OnInit {
   }
 
   Action(){ this.action.emit(this.model); }
+
+  alert(x:any){console.log(x);}
 
 }
 

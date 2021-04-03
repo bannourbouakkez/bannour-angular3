@@ -1,8 +1,9 @@
 <mat-form-field>
     <mat-chip-list #chipList aria-label="Choose a date"
       (click)="picker.open()">
-      <mat-chip
+      <mat-chip 
         *ngFor="let value of model"
+        (click)="alert(value)"
         [selectable]="false"
         [removable]="true"
         (removed)="remove(value)">
