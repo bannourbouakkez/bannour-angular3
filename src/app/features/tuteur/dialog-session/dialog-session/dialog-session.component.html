@@ -10,18 +10,18 @@ Select Date
     <!-- order items table-->
     <table class="table table-borderless">
       <thead class="thead-light">
-        <th>SessionID</th>
-        <th>start</th>
-        <th>end</th>
-        <th>duree</th>
+        <th>#</th>
+        <th>Date Debut</th>
+        <th>Date Fin</th>
+        <th>Duree</th>
         <th>
-          <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(null,service.formData.DateID)">Add Session</a>
+          <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(null,service.formData.DateID)"> + Ajoueter Session</a>
         </th>
       </thead>
       <tbody>
         <tr *ngIf="service.datesessions.length==0" [class.text-danger]="!isValid && service.datesessions.length==0">
           <td class="font-italic text-center" colspan="5">
-            No food item selected for this order.
+            Aucune session . 
           </td>
         </tr>
   
@@ -29,10 +29,10 @@ Select Date
           <td>{{item.SessionID}}</td>
           <td>{{item.timeStart}}</td>
           <td>{{item.timeEnd}}</td>
-          <td>duree</td>
+          <td>? h</td>
           <td>
-            <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,service.formData.DateID)">M &nbsp;</a>
-            <a class="btn btn-sm btn-danger text-white ml-1" (click)="deleteSession(item.SessionID,i)">&nbsp; X &nbsp;</a>
+            <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,service.formData.DateID)">Modifier</a>
+            <a class="btn btn-sm btn-danger text-white ml-1" (click)="deleteSession(item.SessionID,i)">Suprimer</a>
           </td>
         </tr>
       </tbody>
