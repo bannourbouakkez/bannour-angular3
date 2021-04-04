@@ -11,17 +11,18 @@ No tuteur selected
     <!-- order items table-->
     <table class="table table-borderless">
       <thead class="thead-light">
-        <th>SessionID</th>
-        <th>timeStart</th>
-        <th>timeEnd</th>
-        <th>duree</th>
-        <th>isReserved</th>
+        <th>#</th>
+        <th>Date Debut</th>
+        <th>Date Fin </th>
+        <th>Duree</th>
+        <th>Reserve</th>
+        <th>Action</th>
       </thead>
 
       <tbody>
         <tr *ngIf="sessions.length==0">
           <td class="font-italic text-center" colspan="5">
-            No sessions 
+            Pas de sessions 
           </td>
         </tr>
   
@@ -29,14 +30,14 @@ No tuteur selected
           <td>{{item.SessionID}}</td>
           <td>{{item.timeStart}}</td>
           <td>{{item.timeEnd}}</td>
-          <td>duree</td>
+          <td>? h</td>
           <td>{{item.isReserved}}</td>
           <td>
               <ng-container *ngIf="!item.isReserved">
-                <a class="btn btn-sm btn-info text-white" (click)="reserver(i,item.SessionID)">R &nbsp;</a>
+                <a class="btn btn-sm btn-info text-white" (click)="reserver(i,item.SessionID)">Rersever</a>
               </ng-container>
               <ng-container *ngIf="item.isReserved">
-                <a class="btn btn-sm btn-info text-white" (click)="annulerReservation(i,item.SessionID)">X &nbsp;</a>
+                <a class="btn btn-sm btn-danger text-white" (click)="annulerReservation(i,item.SessionID)">Annuler Reservation</a>
               </ng-container>
           </td>
         </tr>
