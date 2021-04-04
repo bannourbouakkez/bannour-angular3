@@ -43,7 +43,7 @@ export class ListePeriodesComponent implements OnInit {
   addOrEditPeriode(PeriodeID:number,i:number) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "50%";
     dialogConfig.data = { PeriodeID }; 
     this.dialog.open(AddPeriodeComponent, dialogConfig).afterClosed().subscribe(res => {
      if(res != undefined && res != null){
