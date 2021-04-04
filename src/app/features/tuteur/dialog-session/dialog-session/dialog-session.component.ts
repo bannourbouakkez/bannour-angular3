@@ -62,7 +62,7 @@ export class DialogSessionComponent  {
   AddOrEditOrderItem(dateSessionIndex, DateID) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = "40%";
     let mydate = this.mydate;
     dialogConfig.data = { dateSessionIndex, DateID , mydate };
     this.dialog.open(DialogDateSessionComponent, dialogConfig).afterClosed().subscribe(res => {
