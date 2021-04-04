@@ -1,6 +1,6 @@
 <br>
 <ng-container *ngIf="!DateID">
-Select Date 
+Pas de date .
 </ng-container>
 
 <ng-container *ngIf="DateID">
@@ -29,7 +29,7 @@ Select Date
           <td>{{item.SessionID}}</td>
           <td>{{item.timeStart}}</td>
           <td>{{item.timeEnd}}</td>
-          <td>? h</td>
+          <td>{{CalculerNbMinBetweenTwoDate2(item.timeStart,item.timeEnd)}} m</td>
           <td>
             <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,service.formData.DateID)">Modifier</a>
             <a class="btn btn-sm btn-danger text-white ml-1" (click)="deleteSession(item.SessionID,i)">Suprimer</a>

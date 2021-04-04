@@ -110,4 +110,15 @@ export class DialogSessionComponent  {
   }
 
 
+  CalculerNbMinBetweenTwoDate2(date1: Date, date2: Date) {
+
+
+    date1 = new Date(moment(date1).format("YYYY-MM-DDTHH:mm:00"));
+    date2 = new Date(moment(date2).format("YYYY-MM-DDTHH:mm:00"));
+    
+    
+    return (((date2.getTime() - date1.getTime()) / 1000) / 60);
+    
+    }
+    
 }

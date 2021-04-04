@@ -5,6 +5,7 @@ import moment, { isMoment } from 'moment';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArrayDataSource } from '@angular/cdk/collections';
+//import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class AddPeriodeComponent implements OnInit {
 
   formDate: FormGroup;
   constructor(private _formBuilder: FormBuilder, private _tuteurService: TuteurService,
-    public dialogRef: MatDialogRef<AddPeriodeComponent>, @Inject(MAT_DIALOG_DATA) public data
+    public dialogRef: MatDialogRef<AddPeriodeComponent>, @Inject(MAT_DIALOG_DATA) public data,
+    //private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -51,7 +53,7 @@ export class AddPeriodeComponent implements OnInit {
   getPeriodeWithDates(PeriodeID: number) {
     this._tuteurService.getPeriodeWithDates(PeriodeID).then(
       res => {
-        console.log(res);
+       
         this.range.patchValue({ start: res.start });
         this.range.patchValue({ end: res.end });
         this.dates = res.dates;

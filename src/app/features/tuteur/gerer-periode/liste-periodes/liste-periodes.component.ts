@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+//import { ToastrService } from 'ngx-toastr';
 import { TuteurService } from '../../services/tuteur.service';
 import { AddPeriodeComponent } from '../add-periode/add-periode.component';
 
@@ -12,7 +13,9 @@ export class ListePeriodesComponent implements OnInit {
 
   load=false;
   periodes=[];
-  constructor(private dialog: MatDialog,private _tuteurService:TuteurService) { }
+  constructor(private dialog: MatDialog,private _tuteurService:TuteurService
+    //,private toastr:ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getPeriodesWithDates();
@@ -54,7 +57,9 @@ export class ListePeriodesComponent implements OnInit {
           }
           else{
            this.periodes[i]=res.periode;
-           console.log(res.msg);
+           //console.log(res.msg);
+           //this.toastr.success('Hello world!', 'Toastr fun!');
+
           }
          }else{
            console.log(res.msg);

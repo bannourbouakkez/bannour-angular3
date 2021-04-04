@@ -19,6 +19,8 @@
     <br><br>
 
     <button type="button" class="btn btn-default" *ngIf="_authService.loggedIn()" [routerLink]="['/logout']" (click)="logoutUser()">Logout</button>
+    <button type="button" class="btn btn-default" *ngIf="!_authService.loggedIn()" [routerLink]="['/auth/login']">Login</button>
 
+    
 
   </div>

@@ -11,6 +11,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { SharedModule } from './shared/shared/shared.module';
 import { MenuComponent } from './menu/menu.component';
+//import { ToastrModule } from 'ngx-toastr';
 
 /*
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -30,7 +31,9 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    //ToastrModule.forRoot()
+
 
     //MatDatepickerModule, MatMomentDateModule,
 

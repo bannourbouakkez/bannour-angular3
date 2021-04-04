@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 import { TuteurRoutingModule } from './tuteur-routing.module';
-import { DisponibiliteComponent } from './disponibilite/disponibilite.component';
-import { PickDatesComponent } from './gerer-periode/pick-dates/pick-dates.component';
 import { AddSessionComponent } from './add-session/add-session.component';
 import { SessionsComponent } from './sessions/sessions.component';
 import { DialogDateSessionComponent } from './dialog-session/dialog-date-session/dialog-date-session.component';
@@ -17,7 +15,7 @@ import { DialogSessionComponent } from './dialog-session/dialog-session/dialog-s
 
 
 @NgModule({
-  declarations: [DisponibiliteComponent, PickDatesComponent, AddSessionComponent, SessionsComponent, DialogSessionComponent, DialogDateSessionComponent, AddPeriodeComponent, ListePeriodesComponent],
+  declarations: [ AddSessionComponent, SessionsComponent, DialogSessionComponent, DialogDateSessionComponent, AddPeriodeComponent, ListePeriodesComponent],
   imports: [
     CommonModule,
     SharedModule,
