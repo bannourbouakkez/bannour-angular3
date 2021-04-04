@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ReserverSessionComponent } from './reserver-session/reserver-session.component';
 
 const routes: Routes = [
-  { path: 'reservation', component: ReservationComponent }
+  { path: 'reservation', component: ReserverSessionComponent }
 ];
 
 @NgModule({

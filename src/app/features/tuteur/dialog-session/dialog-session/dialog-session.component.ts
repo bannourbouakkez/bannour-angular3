@@ -16,6 +16,7 @@ export class DialogSessionComponent  {
   @Input() DateID:number;
   isValid: boolean = true;
   date=new Date();
+  mydate:Date;
 
   constructor(public service: DialogDateService,private dialog: MatDialog,
               private _tuteurService:TuteurService) { }
@@ -27,8 +28,10 @@ export class DialogSessionComponent  {
      this.resetForm();
     else {
       this._tuteurService.getDateByID(DateID).then(res => {
+        console.log(res);
         this.service.formData = res.date;
         this.service.datesessions = res.datesessions;
+        this.mydate=res.date.date;
       });
     }
   }
@@ -60,7 +63,8 @@ export class DialogSessionComponent  {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = { dateSessionIndex, DateID };
+    let mydate = this.mydate;
+    dialogConfig.data = { dateSessionIndex, DateID , mydate };
     this.dialog.open(DialogDateSessionComponent, dialogConfig).afterClosed().subscribe(res => {
       
     });

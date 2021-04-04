@@ -1,0 +1,24 @@
+
+<form [formGroup]="form"  autocomplete="off">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date" (dateChange)="setTimeStart($event)" >
+            <input matEndDate formControlName="end" placeholder="End date" (dateChange)="setTimeEnd($event)">
+         
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    
+    <label>Choisissez la date</label>
+    <select formControlName="TuteurID" (change)="selectTuteur($any($event))">
+      <option *ngFor="let tuteur of tuteurs" [value]="tuteur.id">{{tuteur.name}}</option>
+    </select>
+  
+        <app-sessions [TuteurID]="form.get('TuteurID').value" [start]="form.get('start').value" [end]="form.get('end').value"></app-sessions>
+    
+</form>
+

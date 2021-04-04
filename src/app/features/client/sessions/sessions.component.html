@@ -1,0 +1,48 @@
+<br>
+TuteurID {{TuteurID}} <br>
+<ng-container *ngIf="!TuteurID">
+No tuteur selected 
+</ng-container>
+
+<ng-container *ngIf="TuteurID">
+
+    <div class="row">
+    </div>
+    <!-- order items table-->
+    <table class="table table-borderless">
+      <thead class="thead-light">
+        <th>SessionID</th>
+        <th>timeStart</th>
+        <th>timeEnd</th>
+        <th>duree</th>
+        <th>isReserved</th>
+      </thead>
+
+      <tbody>
+        <tr *ngIf="sessions.length==0">
+          <td class="font-italic text-center" colspan="5">
+            No sessions 
+          </td>
+        </tr>
+  
+        <tr *ngFor="let item of sessions;let i=index;">
+          <td>{{item.SessionID}}</td>
+          <td>{{item.timeStart}}</td>
+          <td>{{item.timeEnd}}</td>
+          <td>duree</td>
+          <td>{{item.isReserved}}</td>
+          <td>
+              <ng-container *ngIf="!item.isReserved">
+                <a class="btn btn-sm btn-info text-white" (click)="reserver(i,item.SessionID)">R &nbsp;</a>
+              </ng-container>
+              <ng-container *ngIf="item.isReserved">
+                <a class="btn btn-sm btn-info text-white" (click)="annulerReservation(i,item.SessionID)">X &nbsp;</a>
+              </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+</ng-container>
+
+   

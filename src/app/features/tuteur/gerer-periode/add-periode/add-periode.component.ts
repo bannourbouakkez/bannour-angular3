@@ -4,6 +4,7 @@ import { TuteurService } from '../../services/tuteur.service';
 import moment, { isMoment } from 'moment';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ArrayDataSource } from '@angular/cdk/collections';
 
 
 @Component({
@@ -73,7 +74,7 @@ export class AddPeriodeComponent implements OnInit {
         if (res.success) {
           this.dialogRef.close(res);
         } else {
-          this.dialogRef.close();
+          this.dialogRef.close(res);
         }
       });
     }else{
@@ -82,6 +83,7 @@ export class AddPeriodeComponent implements OnInit {
   }
 
   editPeriode(PeriodeID: number) {
+    if(this.range.valid){
     this._tuteurService.editPeriode(PeriodeID,this.range.value,this.dates,this.datesToDelete).then(
       res => {
         console.log(res);
@@ -91,6 +93,9 @@ export class AddPeriodeComponent implements OnInit {
           this.dialogRef.close(res);
         }
       });
+    }else{
+      console.log('invalid form');
+    }
   }
 
 
@@ -149,6 +154,44 @@ export class AddPeriodeComponent implements OnInit {
     console.log(dday, cday, dmonth, cmonth, cyear, dyear);
     return cmonth == dmonth && cday == dday && cyear == dyear;
   }
+
+  dateIsBetweenStartEnd(date,start,end) {
+    var dd=new Date(date);
+    var ds=new Date(start);
+    var de=new Date(end);
+    console.log(dd,ds,de);
+    return  ( dd.getTime() >= ds.getTime() )  && ( dd.getTime() <= de.getTime() ) ; 
+  }
+
+
+
+
+  setTimeStart($event) {
+    if($event.value)
+    this.range.patchValue({start:($event.value).format("YYYY-MM-DD")});
+  }
+  setTimeEnd($event) {
+    if($event.value){
+    this.range.patchValue({end:($event.value).format("YYYY-MM-DD")});
+    this.dates=this.deleteDateOutOfRange();
+    }
+  }
+
+  deleteDateOutOfRange(){
+    let newArr=[];
+    for(let i=0;i<this.dates.length;i++){
+      let d=new Date(this.dates[i].date);
+      let start = this.range.get('start').value;
+      let end = this.range.get('end').value;
+      if(this.dateIsBetweenStartEnd(d,start,end)){
+        newArr.push(this.dates[i]);
+      }
+    } 
+    return newArr;
+  }
+
+  
+
 
 
 

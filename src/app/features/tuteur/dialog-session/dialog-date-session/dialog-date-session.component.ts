@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig, MatDialog } from '@angu
 import { NgForm } from '@angular/forms';
 import { DialogDateService } from '../dialog-date.service';
 import { TuteurService } from '../../services/tuteur.service';
-import { isMoment } from 'moment';
+import moment, { isMoment } from 'moment';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class DialogDateSessionComponent implements OnInit {
   formData;
   itemList = <any>[];
   isValid: boolean = true;
-
+  mydate:any;
+  mydatemax:any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<DialogDateSessionComponent>,
@@ -35,7 +36,24 @@ export class DialogDateSessionComponent implements OnInit {
     else
       this.formData = Object.assign({}, this._dateService.datesessions[this.data.dateSessionIndex]);
 
+  //this.mydate=this.data.mydate;
+  //this.mydatemax=this.addDays(this.data.mydate,1);//.format('YYYY-MM-DD');
+  //this.mydate=this.addDays(this.data.mydate,-1);
 
+
+  //this.mydatemax=new Date(this.mydate).setHours(20);
+  let my=this.data.mydate;
+  this.mydate = new Date(moment(my).format("YYYY-MM-DDT00:00:00"));
+  this.mydatemax = new Date(moment(my).format("YYYY-MM-DDT23:59:00"));
+
+  
+
+  }
+
+  addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 
   onSubmit(form: NgForm) {
