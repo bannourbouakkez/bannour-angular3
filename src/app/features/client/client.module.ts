@@ -5,10 +5,11 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ClientRoutingModule } from './client-routing.module';
 import { ReserverSessionComponent } from './reserver-session/reserver-session.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { MesSessionsComponent } from './mes-sessions/mes-sessions.component';
 
 
 @NgModule({
-  declarations: [ ReserverSessionComponent, SessionsComponent],
+  declarations: [ ReserverSessionComponent, SessionsComponent, MesSessionsComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

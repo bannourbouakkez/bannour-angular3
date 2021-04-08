@@ -57,6 +57,15 @@ export class AuthService {
     }
     return false;
   }
+  name(){
+    const token = localStorage.getItem('token');
+    if(token){
+    const tokenPayload = jwt_decode(token);
+    let name=tokenPayload['name'];
+    return name;
+    }
+    return "";
+  }
 
 
 

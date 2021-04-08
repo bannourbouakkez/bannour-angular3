@@ -28,7 +28,6 @@ export class SessionsComponent implements OnInit {
      this.resetForm();
     else {
       this._clientService.getSessionsByRangeAndByTuteurID(this.start,this.end,this.TuteurID).then(res => {
-        console.log(res);
         this.tuteur = res.tuteur;
         this.sessions = res.sessions;
       });

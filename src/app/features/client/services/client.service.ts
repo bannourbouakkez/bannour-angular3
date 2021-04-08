@@ -30,6 +30,9 @@ export class ClientService {
 
   
 
+  getMesSessionsReserve(){
+    return this._http.get<any>(environment.apiUrl+'/client/getMesSessionsReserve').toPromise();
+  }
   
 
 

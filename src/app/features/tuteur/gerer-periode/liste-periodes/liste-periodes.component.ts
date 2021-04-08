@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { TuteurService } from '../../services/tuteur.service';
 import { AddPeriodeComponent } from '../add-periode/add-periode.component';
 
@@ -14,7 +14,7 @@ export class ListePeriodesComponent implements OnInit {
   load=false;
   periodes=[];
   constructor(private dialog: MatDialog,private _tuteurService:TuteurService
-    //,private toastr:ToastrService
+    ,private toastr:ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -35,8 +35,10 @@ export class ListePeriodesComponent implements OnInit {
       res => {
         if(res.success){
           this.periodes.splice(i, 1);
+          this.toastr.success(res.msg,'Success :');
         }else{
-          console.log('failed');
+          this.toastr.error(res.msg,'Failed :');
+
         }
       });
   }
@@ -50,19 +52,17 @@ export class ListePeriodesComponent implements OnInit {
     dialogConfig.data = { PeriodeID }; 
     this.dialog.open(AddPeriodeComponent, dialogConfig).afterClosed().subscribe(res => {
      if(res != undefined && res != null){
+
          if(res.success){
           if(!PeriodeID){
           this.periodes.push(res.periode);
-          console.log(res.msg);
-          }
-          else{
+          this.toastr.success(res.msg,'Success : ');
+          }else{
            this.periodes[i]=res.periode;
-           //console.log(res.msg);
-           //this.toastr.success('Hello world!', 'Toastr fun!');
-
+           this.toastr.success(res.msg,'Success :');
           }
          }else{
-           console.log(res.msg);
+          this.toastr.error(res.msg,'Failed : ');
          }
       }
     });

@@ -7,6 +7,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
+@import '~ngx-toastr/toastr';
+//@import '~ngx-toastr/toastr-bs4-alert';
+//@import '~bootstrap/scss/functions';
+
+//@import '~bootstrap/scss/variables'; 
+//@import '~bootstrap/scss/mixins';
+//@import '~ngx-toastr/toastr-bs4-alert';
+
 .jumbotron{
     padding-top: 0px;
     background: #fff;

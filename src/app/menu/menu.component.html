@@ -8,15 +8,21 @@
         <ng-container *ngIf="_authService.isTuteur()">
         <a href="#" class="list-group-item" [routerLink]="['/tuteur/periodes']">Gerer Periodes</a>
         <a href="#" class="list-group-item" [routerLink]="['/tuteur/addsession']">Gerer Sessions</a>
+        <a href="#" class="list-group-item" [routerLink]="['/tuteur/reserve']">Mes Sessions reserve</a>
         </ng-container>
 
         <ng-container *ngIf="_authService.isClient()">
         <a href="#" class="list-group-item" [routerLink]="['/client/reservation']">Reservation</a>
+        <a href="#" class="list-group-item" [routerLink]="['/client/messessions']">Mes sessions</a>
         </ng-container>
      
     </div>
+<br>
+    <h2>
+    {{_authService.name()}}
+    </h2>
 
-    <br><br>
+
 
     <button type="button" class="btn btn-default" *ngIf="_authService.loggedIn()" [routerLink]="['/logout']" (click)="logoutUser()">Logout</button>
     <button type="button" class="btn btn-default" *ngIf="!_authService.loggedIn()" [routerLink]="['/auth/login']">Login</button>

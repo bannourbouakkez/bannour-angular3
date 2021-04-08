@@ -5,6 +5,7 @@ import moment, { isMoment } from 'moment';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArrayDataSource } from '@angular/cdk/collections';
+import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
 
 
@@ -32,7 +33,7 @@ export class AddPeriodeComponent implements OnInit {
   formDate: FormGroup;
   constructor(private _formBuilder: FormBuilder, private _tuteurService: TuteurService,
     public dialogRef: MatDialogRef<AddPeriodeComponent>, @Inject(MAT_DIALOG_DATA) public data,
-    //private toastr: ToastrService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -80,7 +81,7 @@ export class AddPeriodeComponent implements OnInit {
         }
       });
     }else{
-      console.log('invalid form');
+      this.toastr.error('Invalid Form ','Failed : ');
     }
   }
 
@@ -88,7 +89,6 @@ export class AddPeriodeComponent implements OnInit {
     if(this.range.valid){
     this._tuteurService.editPeriode(PeriodeID,this.range.value,this.dates,this.datesToDelete).then(
       res => {
-        console.log(res);
         if (res.success) {
           this.dialogRef.close(res);
         } else {
@@ -96,7 +96,7 @@ export class AddPeriodeComponent implements OnInit {
         }
       });
     }else{
-      console.log('invalid form');
+      this.toastr.error('Invalid Form ','Failed : ');
     }
   }
 

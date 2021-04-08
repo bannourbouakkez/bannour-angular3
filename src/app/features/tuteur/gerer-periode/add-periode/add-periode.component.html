@@ -15,9 +15,6 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
     
-    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-    
 </mat-form-field>
     </div>
 
@@ -60,8 +57,13 @@
 
 <button (click)="submit()" class="btn btn-dark"><i class="fa fa-database"></i> Envoyer </button>
 
-
+<br>
+<br>
+RQ : 
+<br> Vous ne pouvez pas selectioner un intervalle qui intersectionne avec un autre .
+<br> L'orsque vous minimiser l'intervalle les dates deja selectionnés en dehors de cette nouveau periode vont etre supprimées .
 </ng-container>
+
 
 
 

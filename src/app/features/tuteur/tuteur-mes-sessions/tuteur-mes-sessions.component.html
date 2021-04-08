@@ -1,0 +1,39 @@
+<br>
+
+
+<ng-container *ngIf="true">
+
+    <div class="row">
+    </div>
+    <!-- order items table-->
+    <table class="table table-borderless">
+      <thead class="thead-light">
+        <th>#</th>
+        <th>Date Debut</th>
+        <th>Date Fin</th>
+        <th>Duree</th>
+        <th>Reservee Par </th>
+        <th>Action</th>
+
+      </thead>
+      <tbody>
+        <tr *ngIf="sessions.length==0">
+          <td class="font-italic text-center" colspan="5">
+            Aucune session reservee .
+          </td>
+        </tr>
+  
+        <tr *ngFor="let item of sessions;let i=index;">
+          <td>{{item.SessionID}}</td>
+          <td>{{item.timeStart}}</td>
+          <td>{{item.timeEnd}}</td>
+          <td>{{CalculerNbMinBetweenTwoDate2(item.timeStart,item.timeEnd)}} m</td>
+          <td>{{item.name}}</td>
+          <td>
+            <a class="btn btn-sm btn-danger text-white ml-1" (click)="deleteSession(item.SessionID,i)">Suprimer</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+</ng-container>

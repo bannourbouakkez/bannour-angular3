@@ -55,4 +55,9 @@ export class TuteurService {
     return this._http.get<any>(environment.apiUrl + '/tuteur/deletePeriode/'+PeriodeID).toPromise();
   }
   
+
+  getTuteurMesSessionsReserve(){
+    return this._http.get<any>(environment.apiUrl + '/tuteur/getTuteurMesSessionsReserve').toPromise();
+  }
+  
 }

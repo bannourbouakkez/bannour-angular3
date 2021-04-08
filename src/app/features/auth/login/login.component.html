@@ -24,19 +24,48 @@
             </div>
       
           </div>
-      
-          tuteurs : <br>
-
-          user: tuteur1@tuteur1.com , pwd: tuteur1 <br>
-          user: tuteur2@tuteur2.com , pwd: tuteur2 <br>
-          user: tuteur3@tuteur3.com , pwd: tuteur3 <br>
-<br><br>
-clients:<br>
-user: client1@client1.com , pwd: client1 <br>
-user: client1@client2.com , pwd: client2 <br>
-user: client1@client3.com , pwd: client3 <br>
+  
 
         </div>
       </div>
     
     </form>
+
+        
+    tuteurs :&nbsp; &nbsp;
+    <button (click)="loginThisUser('tuteur1@tuteur1.com','tuteur1')"
+    type="button" class="btn btn-primary btn-xs">
+       user: tuteur1@tuteur1.com , pwd: tuteur1
+    </button>
+    &nbsp; &nbsp;
+    <button (click)="loginThisUser('tuteur2@tuteur2.com','tuteur2')"
+    type="button" class="btn btn-primary btn-xs">
+       user: tuteur2@tuteur2.com , pwd: tuteur2
+    </button>
+    &nbsp; &nbsp;
+<button (click)="loginThisUser('tuteur3@tuteur3.com','tuteur3')"
+    type="button" class="btn btn-primary btn-xs">
+       user: tuteur3@tuteur3.com , pwd: tuteur3
+    </button>
+
+   
+<br><br>
+clients: &nbsp; &nbsp;
+
+<button (click)="loginThisUser('client1@client1.com','client1')"
+    type="button" class="btn btn-primary btn-xs">
+       user: client1@client1.com , pwd: client1
+    </button>
+&nbsp; &nbsp;
+    <button (click)="loginThisUser('client2@client2.com','client2')"
+    type="button" class="btn btn-primary btn-xs">
+       user: client2@client2.com , pwd: client2
+    </button>
+    &nbsp; &nbsp;
+
+    <button (click)="loginThisUser('client3@client3.com','client3')"
+    type="button" class="btn btn-primary btn-xs">
+       user: client3@client3.com , pwd: client3
+    </button>
+
+    

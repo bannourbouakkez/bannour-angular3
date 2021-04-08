@@ -2,6 +2,7 @@ import { Component, Input, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import moment, { isMoment } from 'moment';
+import { ToastrService } from 'ngx-toastr';
 import { TuteurService } from '../../services/tuteur.service';
 import { DialogDateSessionComponent } from '../dialog-date-session/dialog-date-session.component';
 import { DialogDateService } from '../dialog-date.service';
@@ -19,7 +20,7 @@ export class DialogSessionComponent  {
   mydate:Date;
 
   constructor(public service: DialogDateService,private dialog: MatDialog,
-              private _tuteurService:TuteurService) { }
+              private _tuteurService:TuteurService,private toastr: ToastrService) { }
 
   instructions(){
     let DateID = +this.DateID;
@@ -28,7 +29,6 @@ export class DialogSessionComponent  {
      this.resetForm();
     else {
       this._tuteurService.getDateByID(DateID).then(res => {
-        console.log(res);
         this.service.formData = res.date;
         this.service.datesessions = res.datesessions;
         this.mydate=res.date.date;
@@ -74,8 +74,8 @@ export class DialogSessionComponent  {
   deleteSession(SessionID:number,i:number) {
     this._tuteurService.deleteSession(SessionID).then(res => {
       if(res.success){
-        console.log(res.success);
         this.service.datesessions.splice(i, 1);
+        this.toastr.success(res.msg,'Success : ');
       }
     });
   }

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { DialogDateService } from '../dialog-date.service';
 import { TuteurService } from '../../services/tuteur.service';
 import moment, { isMoment } from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class DialogDateSessionComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<DialogDateSessionComponent>,
     private _sessionService: TuteurService,
-    private _dateService: DialogDateService) { }
+    private _dateService: DialogDateService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this._sessionService.getSessionsByDateID(this.data.DateID).then(res => this.itemList = res);
@@ -62,11 +63,11 @@ export class DialogDateSessionComponent implements OnInit {
     if (this.validateForm(this.formData)) {
       if (this.data.dateSessionIndex == null) {
         this._dateService.addSession(this.data.DateID, form.value).then(res => {
-          console.log(res);
           if (res.success) {
             this._dateService.datesessions.push(res.session);
+            this.toastr.success(res.msg,'Success : ');
           } else {
-            console.log('');
+            this.toastr.error(res.msg,'Failed : ');
           }
         });
       }
@@ -74,17 +75,17 @@ export class DialogDateSessionComponent implements OnInit {
         this._dateService.editSession(this.formData.SessionID, form.value).then(res => {
           if (res.success) {
             this._dateService.datesessions[this.data.dateSessionIndex] = res.session;
-            console.log(res.msg);
-          } else {
+            this.toastr.success(res.msg,'Success : ');
 
-            console.log(res.msg);
+          } else {
+            this.toastr.error(res.msg,'Failed : ');
           }
         });
       }
 
       this.dialogRef.close();
     } else {
-      console.log('invalide form');
+      this.toastr.error('Invalid Form','Failed : ');
     }
 
 
